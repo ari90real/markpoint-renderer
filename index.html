@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markpoint Renderer — Labelpoint II Preview</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="toolbar" role="toolbar" aria-label="Renderer controls">
+    <div class="toolbar__group">
+      <label for="dpi-select" class="toolbar__label">DPI</label>
+      <select id="dpi-select">
+        <option value="203" selected>203 DPI</option>
+        <option value="300">300 DPI</option>
+      </select>
+    </div>
+
+    <div class="toolbar__group">
+      <label for="label-width" class="toolbar__label">Breite (mm)</label>
+      <input id="label-width" type="number" value="101" min="1" max="999" step="0.5" />
+    </div>
+
+    <div class="toolbar__group">
+      <label for="label-height" class="toolbar__label">Höhe (mm)</label>
+      <input id="label-height" type="number" value="60" min="1" max="999" step="0.5" />
+    </div>
+
+    <div class="toolbar__group">
+      <input id="auto-render" type="checkbox" checked />
+      <label for="auto-render" class="toolbar__label">Auto</label>
+    </div>
+
+    <div class="toolbar__group">
+      <button id="btn-render" type="button" class="btn btn--render">Render</button>
+      <button id="btn-export" type="button" class="btn btn--export">Export PNG</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <section class="pane pane--editor" aria-label="Code editor">
+      <div class="editor-body">
+        <ol class="line-numbers" id="line-numbers" aria-hidden="true"></ol>
+        <textarea
+          id="code-editor"
+          class="editor-textarea"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          aria-label="Labelpoint II source code"
+        ></textarea>
+      </div>
+    </section>
+
+    <div class="divider" role="separator" aria-orientation="vertical"></div>
+
+    <section class="pane pane--preview" aria-label="Label preview">
+      <div class="preview-body" id="preview-body">
+        <div class="preview-canvas-wrap">
+          <canvas id="label-canvas" aria-label="Rendered label preview"></canvas>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="statusbar" role="status" aria-live="polite">
+    <span class="statusbar__item" id="status-commands">Commands: —</span>
+    <span class="statusbar__sep"></span>
+    <span class="statusbar__item" id="status-errors">Errors: —</span>
+    <span class="statusbar__sep"></span>
+    <span class="statusbar__item" id="status-message"></span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bwip-js@4/dist/bwip-js-min.js"></script>
+  <script src="js/fonts.js"></script>
+  <script src="js/coordinates.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
